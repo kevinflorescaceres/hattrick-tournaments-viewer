@@ -22,7 +22,7 @@ default: &default
 
 development:
   <<: *default
-  database: hattrick_tournaments_viewer_development
+  database: <%= ENV["DB_NAME_DEV"] %>
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -56,7 +56,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: hattrick_tournaments_viewer_test
+  database: <%= ENV["DB_NAME_TEST"] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: hattrick_tournaments_viewer_production
-  username: hattrick_tournaments_viewer
-  password: <%= ENV["HATTRICK_TOURNAMENTS_VIEWER_DATABASE_PASSWORD"] %>
+  database: <%= ENV["DB_NAME"] %>
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
