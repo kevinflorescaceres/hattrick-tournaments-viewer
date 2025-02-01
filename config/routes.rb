@@ -14,5 +14,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'tournaments#index'
 
+  resources :oauths, only: [] do
+    collection do
+      get :request_token
+      get :access_token
+    end
+  end
+
   resources :tournaments, only: %i[index]
 end
